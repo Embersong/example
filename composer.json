@@ -1,0 +1,18 @@
+{
+    "name": "ember/example",
+    "authors": [
+        {
+            "name": "ember"
+        }
+    ],
+    "require": {
+        "php": "^8.12"
+    },
+    "autoload": {
+        "files": [
+            "src/blog.php",
+            "src/helpers.php",
+            "src/main.php"
+        ]
+    }
+}
