@@ -6,6 +6,6 @@ require_once 'src/main.php';*/
 
 require __DIR__ . '/vendor/autoload.php';
 
-$result = main();
+$result = main(); //fix
 
 echo $result . PHP_EOL;
