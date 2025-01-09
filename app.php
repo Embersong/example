@@ -8,4 +8,4 @@ require __DIR__ . '/vendor/autoload.php';
 
 $result = main();
 
-echo $result;
+echo $result . PHP_EOL;
