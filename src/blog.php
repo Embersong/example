@@ -44,20 +44,12 @@ function addPost(): string
 
 function readAllPosts(): string
 {
-    //TODO реализуйте чтение всех постов, но вывести только заголовки
-    $fileName = getcwd() . '/db.txt';
-
-    if (!file_exists($fileName)) {
-        return handleError("Нет файла с базой db.txt");
-    }
-
-    if (!is_readable($fileName)) {
-        return handleError("Файл db.txt не читается");
-    }
-
-    return file_get_contents($fileName);
+    $db = getDb();
 
 
+
+
+    return "";
 }
 
 function readPost(): string
