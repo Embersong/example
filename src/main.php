@@ -16,14 +16,16 @@ function main(): string
 function parseCommand(): string
 {
     //TODO улучшите код, избавтесь от дублирования строки handleHelp
-    $functionName = 'handleHelp';
-    if(isset($_SERVER['argv'][1])) {
-        $functionName = match ($_SERVER['argv'][1]) {
-            'help' => 'handleHelp',
+    $command = $_SERVER['argv'][1] ?? 'help';
+
+        return match ($command) {
             'add-post' => 'addPost',
+            'read-all' => 'readAllPosts',
+            'clear-all' => 'clearPosts',
+            'read-post' => 'readPost',
+            'find-posts' => 'searchPost',
+            'delete-post' => 'deletePost',
             default => 'handleHelp'
         };
-    }
 
-    return $functionName;
 }
