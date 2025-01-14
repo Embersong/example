@@ -1,11 +1,11 @@
 <?php
 
-/*require_once 'src/blog.php';
-require_once 'src/helpers.php';
-require_once 'src/main.php';*/
-
 require __DIR__ . '/vendor/autoload.php';
 
-$result = main();
+try {
+    $result = main();
+    echo $result;
+} catch (Exception $e) {
+    echo handleError($e->getMessage());
+}
 
-echo $result;

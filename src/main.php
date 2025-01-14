@@ -25,6 +25,7 @@ function parseCommand(): string
             'read-post' => 'readPost',
             'find-posts' => 'searchPost',
             'delete-post' => 'deletePost',
+            'init' => 'initDB',
             default => 'handleHelp'
         };
 

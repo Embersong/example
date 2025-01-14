@@ -7,9 +7,12 @@ function handleError(string $error): string
 
 function handleHelp(): string
 {
+
     $help = <<<HELP
 Доступные команды
 help - вывод данной подсказки
+init - инициализация структуры БД
+seed - заполнит БД фейковыми данными
 add-post - создать новый пост
 read-all - показать все посты
 clear-all - стереть все посты
