@@ -2,11 +2,7 @@
 
 function addPost(): string
 {
-
-    //TODO реализуйте добавление поста в хранилище db.txt
-    //Заголовок и тело поста считывайте тут же через readline
-    //обработайте ошибки
-    //в случае успеха верните тект что пост добавлен
+    //TODO перевести на БД
 
     $fileName = getcwd() . '/db.txt';
 
@@ -46,42 +42,34 @@ function readAllPosts(): string
 {
     $db = getDb();
 
-
-
-
+    $stmt = $db->query("SELECT p.id post_id, c.id cat_id, c.category, p.title, p.text FROM posts p JOIN categories c ON p.id_category = c.id;");
+    //TODO Организуйте вывод 1 пост 1 строка в виде текста
+    $result = $stmt->fetchAll();
+    print_r($result);
     return "";
 }
 
 function readPost(): string
 {
-    //TODO реализуйте чтение одного поста, номер поста считывайте из командной строки
-    $fileName = getcwd() . '/db.txt';
+    $db = getDb();
 
-    if (!is_readable($fileName)) {
-        return handleError("Файл db.txt не читается");
-    }
 
     do {
         $id = (int)readline("Введите id поста: ");
     } while (empty($id));
 
-    $file = fopen($fileName, 'r');
+    $stmt = $db->prepare("SELECT * FROM posts p JOIN categories c ON p.id_category = c.id WHERE p.id = :id;");
 
-    while (!feof($file)) {
-        $line = fgets($file);
-        $post = explode(";", $line);
-        if ((int)$post[0] === $id) {
-            fclose($file);
-            return $line;
-        }
-    }
+    $stmt->execute(['id' => $id]);
+//TODO вывести текстом пост
+    print_r($stmt->fetch());
 
     return "Пост с id = $id не найден";
 }
 
 function clearPosts(): string
 {
-    //TODO сотрите все посты
+    //TODO перевести на БД
 
     $fileName = getcwd() . '/db.txt';
 
@@ -103,7 +91,7 @@ function clearPosts(): string
 
 function searchPost(): string
 {
-    //TODO* реализуйте поиск поста по заголовку (можно и по всему телу), поисковый запрос спрашивайте через readline
+    //TODO перевести на БД
     $fileName = getcwd() . '/db.txt';
 
     if (!is_readable($fileName)) {
